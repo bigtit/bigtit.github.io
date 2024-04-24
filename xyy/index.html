@@ -11,12 +11,12 @@ function sum() {
     var total = 0;
     var count = 0;
     for (var i=0, len=lines.length; i<len; ++i) {
-	    var subtotal = lines[i].split("=").at(-1);
-	    subtotal = parseFloat(subtotal);
-	    if (isNaN(subtotal)) {
-		    error += "第" + (i+1) + "行：可能的数值错误；";
-	        document.getElementById("sp"+i).style.color="red";
-	        continue;
+        var subtotal = lines[i].split("=").at(-1);
+        subtotal = parseFloat(subtotal);
+        if (isNaN(subtotal)) {
+    	    error += "第" + (i+1) + "行：可能的数值错误；";
+            document.getElementById("sp"+i).style.color="red";
+            continue;
 	    }
         ++count;
         subtotal *= 1000;
