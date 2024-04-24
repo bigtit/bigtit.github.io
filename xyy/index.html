@@ -17,10 +17,10 @@ function sum() {
     	    error += "第" + (i+1) + "行：可能的数值错误；";
             document.getElementById("sp"+i).style.color="red";
             continue;
-	    }
+        }
         ++count;
         subtotal *= 1000;
-	    total += subtotal;
+        total += subtotal;
     }
     // console.log(total/1000);
     document.getElementById("pricetotal").innerHTML = "总和："+total/1000;
