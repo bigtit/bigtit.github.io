@@ -7,14 +7,14 @@
 <script>
 function sum() {
     const lines = document.getElementById("paste").value.split("\n");
-    error = "";
+    error = "可能的数值错误：";
     var total = 0;
     var count = 0;
     for (var i=0, len=lines.length; i<len; ++i) {
         var subtotal = lines[i].split("=").at(-1);
         subtotal = parseFloat(subtotal);
         if (isNaN(subtotal)) {
-    	    error += "第" + (i+1) + "行：可能的数值错误；";
+    	    error += "第"+(i+1)+"行，";
             document.getElementById("sp"+i).style.color="red";
             continue;
         }
@@ -33,6 +33,10 @@ function sum() {
 .main {
     width: 95%;
     margin-top: 5%;
+}
+
+#error {
+    color: red;
 }
 
 .editor {
