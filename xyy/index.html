@@ -9,6 +9,7 @@ function sum() {
     const lines = document.getElementById("paste").value.split("\n");
     error = "";
     var total = 0;
+    var count = 0;
     for (var i=0, len=lines.length; i<len; ++i) {
 	    var subtotal = lines[i].split("=").at(-1);
 	    subtotal = parseFloat(subtotal);
@@ -17,11 +18,13 @@ function sum() {
 	        document.getElementById("sp"+i).style.color="red";
 	        continue;
 	    }
+        ++count;
 	    subtotal *= 1000;
 	    total += subtotal;
     }
     // console.log(total/1000);
-    document.getElementById("result").innerHTML = "总和："+total/1000;
+    document.getElementById("pricetotal").innerHTML = "总和："+total/1000;
+    document.getElementById("count").innerHTML = "合计："+count+" 项";
     document.getElementById("error").innerHTML = error;
 }
 </script>
@@ -76,9 +79,10 @@ textarea {
     <textarea id="paste" wrap=off title="paste" placeholder="输入/粘贴自动计算总和"></textarea>
 </div>
 <div class="info main">
-    <p id="result">总和：</p>
+    <p id="count">合计：</p>
+    <p id="pricetotal">总和：</p>
     <!-- <button type="button" onclick="sum()">点我计算</button> -->
-<span id="error"></span>
+    <p id="error"></p>
 </div>
 <script>
 var textarea = document.querySelector('.editor textarea');
