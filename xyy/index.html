@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>总价计算器</title>
+<script>
+function sum() {
+    const lines = document.getElementById("paste").value.split("\n");
+    error = "";
+    var total = 0;
+    for (var i=0, len=lines.length; i<len; ++i) {
+	    var subtotal = lines[i].split("=").at(-1);
+	    subtotal = parseFloat(subtotal);
+	    if (isNaN(subtotal)) {
+	        error += "第" + (i+1) + "行：可能的数值错误；";
+	        document.getElementById("sp"+i).style.color="red";
+	        continue;
+	    }
+	    subtotal *= 1000;
+	    total += subtotal;
+    }
+    // console.log(total/1000);
+    document.getElementById("result").innerHTML = "总和："+total/1000;
+    document.getElementById("error").innerHTML = error;
+}
+</script>
+
+<style>
+.main {
+  width: 95%;
+  margin-top: 5%;
+}
+
+.editor {
+  display: inline-flex;
+  gap: 10px;
+  font-family: monospace;
+  line-height: 21px;
+  background: #FFFFE0;
+  border-radius: 2px;
+  padding: 20px 10px;
+}
+
+textarea {
+  line-height: 21px;
+  overflow-y: hidden;
+  padding: 0;
+  border: 0;
+  background: #FFFFE0;
+  outline: none;
+  resize: none;
+  width: 100%;
+  maxwidth: 500width;
+}
+.line-numbers {
+  width: 20px;
+  text-align: right;
+  line-height: 21px;
+}
+
+.line-numbers span {
+  counter-increment: linenumber;
+}
+
+.line-numbers span::before {
+  content: counter(linenumber);
+  display: block;
+  /*color: #506882;*/
+}
+</style>
+</head>
+<body>
+    <h1>哈哈</h1>
+    <div class="info main">
+        <p id="result">总和：</p>
+        <!-- <button type="button" onclick="sum()">点我计算</button> -->
+        <span id="error"></span>
+    </div>
+    <div class="editor main">
+        <div class="line-numbers"></div>
+        <textarea id="paste" wrap=off title="paste" placeholder="输入/粘贴自动计算总和"></textarea>
+    </div>
+    
+<script>
+var textarea = document.querySelector('.editor textarea');
+var lineNumbers = document.querySelector('.editor .line-numbers');
+textarea.addEventListener('input', event => {
+  const numberOfLines = event.target.value.split('\n').length;
+  var spans = Array();
+  for (var i=0; i<numberOfLines; ++i) {
+    spans.push('<span id="sp'+i+'"></span>')
+  }
+  lineNumbers.innerHTML = spans.join('');
+  sum();
+})
+</script>
+</body>
+</html>
