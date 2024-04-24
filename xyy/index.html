@@ -11,17 +11,16 @@ function sum() {
     var total = 0;
     var count = 0;
     for (var i=0, len=lines.length; i<len; ++i) {
-	    var subtotal = lines[i].split("=").at(-1);
-	    subtotal = parseFloat(subtotal);
-	    if (isNaN(subtotal)) {
-	        error += "第" + (i+1) + "行：可能的数值错误；";
+	var subtotal = lines[i].split("=").at(-1);
+	subtotal = parseFloat(subtotal);
+	if (isNaN(subtotal)) {
+		error += "第" + (i+1) + "行：可能的数值错误；";
 	        document.getElementById("sp"+i).style.color="red";
 	        continue;
-	    }
-        ++count;
-	    subtotal *= 1000;
-	    total += subtotal;
-    }
+	}
+    ++count;
+	subtotal *= 1000;
+	total += subtotal;
     // console.log(total/1000);
     document.getElementById("pricetotal").innerHTML = "总和："+total/1000;
     document.getElementById("count").innerHTML = "合计："+count+" 项";
