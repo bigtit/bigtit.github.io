@@ -71,17 +71,16 @@ textarea {
 </style>
 </head>
 <body>
-    <h1>哈哈</h1>
-    <div class="info main">
-        <p id="result">总和：</p>
-        <!-- <button type="button" onclick="sum()">点我计算</button> -->
-        <span id="error"></span>
-    </div>
-    <div class="editor main">
-        <div class="line-numbers"></div>
-        <textarea id="paste" wrap=off title="paste" placeholder="输入/粘贴自动计算总和"></textarea>
-    </div>
-    
+<h1>哈哈</h1>
+<div class="editor main">
+    <div class="line-numbers"></div>
+    <textarea id="paste" wrap=off title="paste" placeholder="输入/粘贴自动计算总和"></textarea>
+</div>
+<div class="info main">
+    <p id="result">总和：</p>
+    <!-- <button type="button" onclick="sum()">点我计算</button> -->
+<span id="error"></span>
+</div>
 <script>
 var textarea = document.querySelector('.editor textarea');
 var lineNumbers = document.querySelector('.editor .line-numbers');
