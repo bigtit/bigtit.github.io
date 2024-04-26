@@ -11,7 +11,7 @@ function sum() {
     var total = 0;
     var count = 0;
     for (var i=0, len=lines.length; i<len; ++i) {
-        var subtotal = lines[i].split(/[^\.\d]+/).at(-1);
+        var subtotal = lines[i].trim().split(/[^\.\d]+/).at(-1);
         subtotal = parseFloat(subtotal);
         if (isNaN(subtotal)) {
     	    error += "第"+(i+1)+"行，";
