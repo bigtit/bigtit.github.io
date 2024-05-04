@@ -7,12 +7,13 @@
 <script>
 function sum() {
     const lines = document.getElementById("paste").value.split("\n");
-    if (lines.trim().length === 0) continue;
     error = "可能的数值错误：";
     var total = 0;
     var count = 0;
     for (var i=0, len=lines.length; i<len; ++i) {
-        var subtotal = lines[i].trim().split(/[^\.\d]+/).at(-1);
+        const trimed = lines[i].trim();
+        if (trimed.length === 0) continue;
+        var subtotal = trimed.split(/[^\.\d]+/).at(-1);
         subtotal = parseFloat(subtotal);
         if (isNaN(subtotal)) {
     	    error += "第"+(i+1)+"行，";
